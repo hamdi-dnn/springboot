@@ -1,24 +1,34 @@
 package com.hd.sboot;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@RestController
+@Controller
 @EnableAutoConfiguration
 public class Example {
 
-    @RequestMapping("/toto")
+  private static final Logger logger = LoggerFactory.getLogger(Example.class);
+
+    @RequestMapping("/hello")
     String home() {
         return "Hello World!";
     }
 
-    @RequestMapping("/toto/yes")
-    String room() {
-      return "hello in room";
+    @RequestMapping("/hello/yes")
+    String room(@RequestParam(value="name", required=false, defaultValue="world") String name, Model model) {
+      model.addAttribute("name", name);
+      logger.info("@Example, Name added to model: "+ name);
+
+      return "hello";
     }
 
     public static void main(String[] args) throws Exception {
