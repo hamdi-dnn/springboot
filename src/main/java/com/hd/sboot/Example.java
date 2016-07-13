@@ -20,10 +20,10 @@ public class Example {
 
     @RequestMapping("/hello")
     String home() {
-        return "Hello World!";
+        return "index";
     }
 
-    @RequestMapping("/hello/yes")
+    @RequestMapping("/hello/yes method=POST")
     String room(@RequestParam(value="name", required=false, defaultValue="world") String name, Model model) {
       model.addAttribute("name", name);
       logger.info("@Example, Name added to model: "+ name);
