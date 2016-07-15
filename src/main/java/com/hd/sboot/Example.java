@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ public class Example {
         return "index";
     }
 
-    @RequestMapping("/hello/yes method=POST")
+    @RequestMapping(value="/hello/yes", method=RequestMethod.POST)
     String room(@RequestParam(value="name", required=false, defaultValue="world") String name, Model model) {
       model.addAttribute("name", name);
       logger.info("@Example, Name added to model: "+ name);
