@@ -1,4 +1,4 @@
-package com.hd.sboot;
+package com.hd.sboot.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
